@@ -5,12 +5,12 @@ import 'package:instantmessage/widgets/custom_text_field.dart';
 class AddOrUpdateWord extends StatelessWidget {
   final String wordId;
   final String targetLanguageContent;
-  final String myLanguageContent;
+  final String mylanguagecontent;
 
   final Function(String value) onTargetLanguageContentChanged;
   final Function(String value) onMyLanguageContentChanged;
 
-  const AddOrUpdateWord({this.wordId, this.targetLanguageContent, this.myLanguageContent, this.onTargetLanguageContentChanged, this.onMyLanguageContentChanged});
+  const AddOrUpdateWord({this.wordId, this.targetLanguageContent, this.mylanguagecontent, this.onTargetLanguageContentChanged, this.onMyLanguageContentChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class AddOrUpdateWord extends StatelessWidget {
             },
           ),
           CustomTextField(
-            controller: TextEditingController(text: myLanguageContent ?? ''),
+            controller: TextEditingController(text: mylanguagecontent ?? ''),
             placeHolder: localize(
               context,
               'add_or_update_word_place_holder_my_language',

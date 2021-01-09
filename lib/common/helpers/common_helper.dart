@@ -8,3 +8,5 @@ String generateUniqueId() {
   var uniqueId = uuid.v1();
   return uniqueId;
 }
+
+void showAddOrUpdateWordModalDialog() {}

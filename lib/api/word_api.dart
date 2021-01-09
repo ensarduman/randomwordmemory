@@ -9,13 +9,13 @@ class WordApi {
       var currentUser = await userApi.getCurrentUser();
 
       WordModel wordModel = WordModel();
-      wordModel.id = wordId;
       wordModel.userid = currentUser.id;
       wordModel.mylanguagecontent = mylanguagecontent;
       wordModel.targetlanguagecontent = targetlanguagecontent;
       wordModel.islearned = islearned;
 
-      if (wordModel.id != null) {
+      if (wordId != null) {
+        wordModel.id = wordId;
         await updateWord(wordModel.id, wordModel);
       } else {
         wordId = await addWord(wordModel);
@@ -84,11 +84,11 @@ class WordApi {
   Future<List<WordModel>> getWordsByUserId(String userid) async {
     List<WordModel> wordModels = List<WordModel>();
     try {
-      Query users;
+      Query words;
 
-      users = FirebaseFirestore.instance.collection('words').where('userid', isEqualTo: userid);
+      words = FirebaseFirestore.instance.collection('words').where('userid', isEqualTo: userid);
 
-      QuerySnapshot querySnapshot = await users.get();
+      QuerySnapshot querySnapshot = await words.get();
       if (querySnapshot.size > 0) {
         for (var snapshot in querySnapshot.docs) {
           wordModels.add(WordModel.fromMap(snapshot.data()));
