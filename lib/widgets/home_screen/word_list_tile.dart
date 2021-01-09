@@ -84,7 +84,7 @@ class _WordListTileState extends State<WordListTile> {
           onClose: () {
             _cleanForm();
           },
-          title: localize(context, 'add_or_update_word_add_title'),
+          title: localize(context, 'add_or_update_word_update_title'),
           content: AddOrUpdateWord(
             targetLanguageContent: widget.word.targetlanguagecontent,
             mylanguagecontent: widget.word.mylanguagecontent,

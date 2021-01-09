@@ -3,19 +3,19 @@ import 'package:instantmessage/api/user_api.dart';
 import 'package:instantmessage/models/word_model.dart';
 
 class WordApi {
-  Future<String> addOrUpdateWord({String wordId, String mylanguagecontent, String targetlanguagecontent, bool islearned = false}) async {
+  Future<String> addOrUpdateWord({String wordId, String mylanguagecontent, String targetlanguagecontent, bool islearned}) async {
     try {
       UserApi userApi = UserApi();
       var currentUser = await userApi.getCurrentUser();
 
       WordModel wordModel = WordModel();
-      wordModel.userid = currentUser.id;
-      wordModel.mylanguagecontent = mylanguagecontent;
-      wordModel.targetlanguagecontent = targetlanguagecontent;
-      wordModel.islearned = islearned;
+      wordModel.id = wordId ?? wordModel.id;
+      wordModel.userid = currentUser.id ?? wordModel.userid;
+      wordModel.mylanguagecontent = mylanguagecontent ?? wordModel.mylanguagecontent;
+      wordModel.targetlanguagecontent = targetlanguagecontent ?? wordModel.targetlanguagecontent;
+      wordModel.islearned = islearned ?? wordModel.islearned;
 
       if (wordId != null) {
-        wordModel.id = wordId;
         await updateWord(wordModel.id, wordModel);
       } else {
         wordId = await addWord(wordModel);
