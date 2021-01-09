@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "901401832887",
+    "project_id": "randomwordmemory",
+    "storage_bucket": "randomwordmemory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901401832887:android:a951418cb2014be8594c32",
+        "android_client_info": {
+          "package_name": "com.ensarduman.randomwordmemory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901401832887-t49q7ml5unnfl73ceachddsmog396e86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAppRiPRCx1ZZo6zdUWAKxeDC63LiUIoaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901401832887-t49q7ml5unnfl73ceachddsmog396e86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
