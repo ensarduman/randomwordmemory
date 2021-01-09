@@ -28,10 +28,22 @@ class _NewWordButtonState extends State<NewWordButton> {
     )
         .then((id) {
       if (id != null) {
-        ModalHelper.closeModals(context);
+        _closeModal();
       } else {
         ModalHelper.showToast(localize(context, 'add_or_update_word_save_error'));
       }
+    });
+  }
+
+  void _closeModal() {
+    _cleanForm();
+    ModalHelper.closeModals(context);
+  }
+
+  void _cleanForm() {
+    setState(() {
+      targetLanguageContent = '';
+      myLanguageContent = '';
     });
   }
 
@@ -41,6 +53,9 @@ class _NewWordButtonState extends State<NewWordButton> {
       onTap: () {
         ModalHelper.showModalDialog(
           context,
+          onClose: () {
+            _cleanForm();
+          },
           title: localize(context, 'add_or_update_word_add_title'),
           content: AddOrUpdateWord(
             onTargetLanguageContentChanged: (value) {
@@ -62,7 +77,7 @@ class _NewWordButtonState extends State<NewWordButton> {
             _saveNewWord();
           },
           onSecondButtonClick: () {
-            ModalHelper.closeModals(context);
+            _closeModal();
           },
         );
       },
