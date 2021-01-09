@@ -3,6 +3,7 @@ import 'package:instantmessage/routes/route_names.dart';
 import 'package:instantmessage/screens/error.screen.dart';
 import 'package:instantmessage/screens/home.screen.dart';
 import 'package:instantmessage/screens/login.screen.dart';
+import 'package:instantmessage/screens/random.screen.dart';
 import 'package:instantmessage/screens/register.screen.dart';
 
 class CustomRouter {
@@ -16,6 +17,9 @@ class CustomRouter {
 
       case RouteNames.register:
         return MaterialPageRoute(builder: (_) => RegisterScreen());
+
+      case RouteNames.random:
+        return MaterialPageRoute(builder: (_) => RandomScreen());
     }
 
     return MaterialPageRoute(builder: (_) => ErrorScreen());

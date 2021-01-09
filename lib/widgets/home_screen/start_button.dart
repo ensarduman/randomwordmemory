@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:instantmessage/common/helpers/modal_helper.dart';
+import 'package:instantmessage/routes/route_names.dart';
 
 class StartButton extends StatelessWidget {
+  const StartButton();
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        ModalHelper.showBottomModal(context, content: Text('ASDSADASDASD'));
+        Navigator.of(context).pushNamed(RouteNames.random);
       },
       child: Container(
           padding: EdgeInsets.all(10),
