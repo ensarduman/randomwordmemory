@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instantmessage/common/helpers/modal_helper.dart';
 import 'package:instantmessage/widgets/home_screen/search_user.dart';
 
-class NewConversationButton extends StatelessWidget {
+class NewWordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(

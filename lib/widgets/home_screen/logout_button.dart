@@ -6,7 +6,7 @@ import 'package:instantmessage/common/localization/localization.dart';
 import 'package:instantmessage/routes/route_names.dart';
 
 class LogoutButton extends StatelessWidget {
-  bool navigated = false;
+  bool _navigated = false;
 
   Future<void> _logoutAction(BuildContext context) async {
     Navigator.of(context).pop();
@@ -17,8 +17,8 @@ class LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     FirebaseAuth.instance.authStateChanges().listen((User user) {
       if (user == null) {
-        if (!navigated) {
-          navigated = true;
+        if (!_navigated) {
+          _navigated = true;
           print('User is currently signed out!');
           _logoutAction(context);
         }

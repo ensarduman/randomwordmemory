@@ -6,7 +6,7 @@ class UserApi {
   Future<bool> addUser(UserModel userModel) async {
     try {
       CollectionReference users = FirebaseFirestore.instance.collection('users');
-      DocumentReference result = await users.add({
+      await users.add({
         'id': userModel.id,
         'credentialid': userModel.credentialid,
         'email': userModel.email,

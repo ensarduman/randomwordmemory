@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:instantmessage/api/user_api.dart';
 import 'package:instantmessage/models/user_model.dart';
 import 'package:instantmessage/style/style_colors.dart';
 import 'package:instantmessage/widgets/home_screen/search_user_list_tile.dart';

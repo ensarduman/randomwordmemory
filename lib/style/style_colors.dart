@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class StyleColors {
-  static Color homeConversationTilePrimaryBackground = Colors.blue[100];
-  static Color homeConversationTileSecondaryBackground = Colors.white;
+  static Color homeWordTilePrimaryBackground = Colors.blue[100];
+  static Color homeWordTileSecondaryBackground = Colors.white;
   static Color homeSearchUserResultListTilePrimaryBackground = Colors.blue[100];
   static Color homeSearchUserResultListTileSecondaryBackground = Colors.white;
   static Color chatMessageBoxReceived = Colors.green[100];

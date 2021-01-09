@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instantmessage/widgets/home_screen/conversation_list.dart';
+import 'package:instantmessage/widgets/home_screen/word_list.dart';
 import 'package:instantmessage/widgets/home_screen/home_screen_app_bar.dart';
-import 'package:instantmessage/widgets/home_screen/new_conversation_button.dart';
+import 'package:instantmessage/widgets/home_screen/new_word_button.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,8 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomeScreenAppBar(),
-      body: ConversationList(),
-      floatingActionButton: NewConversationButton(),
+      body: WordList(),
+      floatingActionButton: NewWordButton(),
     );
   }
 }

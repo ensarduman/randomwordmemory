@@ -2,12 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:instantmessage/api/user_api.dart';
 import 'package:instantmessage/common/config.dart';
 import 'package:instantmessage/common/localization/localization.dart';
 import 'package:instantmessage/routes/custom_router.dart';
 import 'package:instantmessage/routes/route_names.dart';
-import 'package:instantmessage/screens/login.screen.dart';
 import 'package:instantmessage/widgets/loading_widget.dart';
 
 void main() {
