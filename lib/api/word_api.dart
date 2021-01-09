@@ -3,31 +3,28 @@ import 'package:instantmessage/api/user_api.dart';
 import 'package:instantmessage/models/word_model.dart';
 
 class WordApi {
-  Future<String> addOrUpdateWord(String userid, {String mylanguagecontent, String targetlanguagecontent, bool islearned, DateTime createdate}) async {
-    String id;
-
+  Future<String> addOrUpdateWord({String wordId, String mylanguagecontent, String targetlanguagecontent, bool islearned = false}) async {
     try {
+      UserApi userApi = UserApi();
+      var currentUser = await userApi.getCurrentUser();
+
       WordModel wordModel = WordModel();
-      wordModel.userid = userid;
+      wordModel.id = wordId;
+      wordModel.userid = currentUser.id;
       wordModel.mylanguagecontent = mylanguagecontent;
       wordModel.targetlanguagecontent = targetlanguagecontent;
       wordModel.islearned = islearned;
-      wordModel.createdate = createdate;
 
-      var words = await getWordsByUserId(wordModel.userid);
-
-      if (words.length > 0) {
-        wordModel.id = words.first.id;
+      if (wordModel.id != null) {
         await updateWord(wordModel.id, wordModel);
-        id = wordModel.id;
       } else {
-        id = await addWord(wordModel);
+        wordId = await addWord(wordModel);
       }
     } catch (error) {
       print(error);
     }
 
-    return id;
+    return wordId;
   }
 
   Future<bool> updateWord(String wordId, WordModel wordModel) async {
@@ -43,34 +40,33 @@ class WordApi {
         'mylanguagecontent': wordModel.mylanguagecontent,
         'targetlanguagecontent': wordModel.targetlanguagecontent,
         'islearned': wordModel.islearned,
-        'lastmessagedate': wordModel.createdate.millisecondsSinceEpoch,
       });
+
+      return isSuccess;
     } catch (error) {
       print(error);
+      throw error;
     }
-
-    return isSuccess;
   }
 
   Future<String> addWord(WordModel wordModel) async {
     try {
       CollectionReference wordsCollection = FirebaseFirestore.instance.collection('words');
 
-      await wordsCollection.add({
+      var result = await wordsCollection.add({
         'id': wordModel.id,
         'userid': wordModel.userid,
         'mylanguagecontent': wordModel.mylanguagecontent,
         'targetlanguagecontent': wordModel.targetlanguagecontent,
         'islearned': wordModel.islearned,
-        'createdate': wordModel.createdate == null ? null : wordModel.createdate.millisecondsSinceEpoch,
+        'createdate': wordModel.createdate == null ? DateTime.now().microsecondsSinceEpoch : wordModel.createdate.millisecondsSinceEpoch,
       });
 
-      return wordModel.id;
+      return result.id;
     } catch (error) {
       print(error);
+      throw error;
     }
-
-    return null;
   }
 
   Future<List<WordModel>> getCurrentUserWords() async {
@@ -115,5 +111,23 @@ class WordApi {
     }
 
     return wordModels;
+  }
+
+  Future<WordModel> getWordById(String id) async {
+    WordModel wordModel = WordModel();
+    try {
+      Query users;
+
+      users = FirebaseFirestore.instance.collection('words').where('id', isEqualTo: id);
+
+      QuerySnapshot querySnapshot = await users.get();
+      if (querySnapshot.size > 0) {
+        wordModel = WordModel.fromMap(querySnapshot.docs[0].data());
+      }
+    } catch (error) {
+      print(error);
+    }
+
+    return wordModel;
   }
 }

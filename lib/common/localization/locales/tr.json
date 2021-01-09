@@ -26,6 +26,8 @@
     "home_logout_yes": "Evet",
     "home_logout_no":"Hayır",
     "add_or_update_word_save_button":"Kaydet",
+    "add_or_update_word_save_form_error":"Lütfen tüm alanları doldurunuz",
+    "add_or_update_word_save_error":"Hata oluştu",
     "add_or_update_word_cancel_button":"Vazgeç",
     "add_or_update_word_add_title":"Kelime Ekle",
     "add_or_update_word_update_title":"Kelime Güncelle",

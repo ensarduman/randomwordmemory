@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:instantmessage/common/localization/localization.dart';
 import 'package:instantmessage/widgets/custom_text_field.dart';
 
-class AddOrUpdateWord extends StatefulWidget {
+class AddOrUpdateWord extends StatelessWidget {
   final String wordId;
+  final String targetLanguageContent;
+  final String myLanguageContent;
 
-  const AddOrUpdateWord({this.wordId});
+  final Function(String value) onTargetLanguageContentChanged;
+  final Function(String value) onMyLanguageContentChanged;
 
-  @override
-  _AddOrUpdateWordState createState() => _AddOrUpdateWordState();
-}
-
-class _AddOrUpdateWordState extends State<AddOrUpdateWord> {
-  String targetLanguageContent;
-  String myLanguageContent;
+  const AddOrUpdateWord({this.wordId, this.targetLanguageContent, this.myLanguageContent, this.onTargetLanguageContentChanged, this.onMyLanguageContentChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +18,27 @@ class _AddOrUpdateWordState extends State<AddOrUpdateWord> {
       child: Column(
         children: [
           CustomTextField(
+            controller: TextEditingController(text: targetLanguageContent ?? ''),
             placeHolder: localize(
               context,
               'add_or_update_word_place_holder_target_language',
             ),
             onChanged: (value) {
-              setState(() {
-                targetLanguageContent = value;
-              });
+              if (onTargetLanguageContentChanged != null) {
+                onTargetLanguageContentChanged(value);
+              }
             },
           ),
           CustomTextField(
+            controller: TextEditingController(text: myLanguageContent ?? ''),
             placeHolder: localize(
               context,
               'add_or_update_word_place_holder_my_language',
             ),
             onChanged: (value) {
-              setState(() {
-                myLanguageContent = value;
-              });
+              if (onMyLanguageContentChanged != null) {
+                onMyLanguageContentChanged(value);
+              }
             },
           ),
         ],
