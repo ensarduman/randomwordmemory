@@ -5,6 +5,7 @@ class WordModel {
   String userid;
   String mylanguagecontent;
   String targetlanguagecontent;
+  bool islearned;
   DateTime createdate;
 
   WordModel({
@@ -12,6 +13,7 @@ class WordModel {
     this.userid,
     this.mylanguagecontent,
     this.targetlanguagecontent,
+    this.islearned,
     this.createdate,
   }) {
     if (id == null) {
@@ -36,6 +38,10 @@ class WordModel {
 
     if (map.containsKey('targetlanguagecontent')) {
       wordModel.targetlanguagecontent = map['targetlanguagecontent'];
+    }
+
+    if (map.containsKey('islearned')) {
+      wordModel.islearned = map['islearned'];
     }
 
     if (map.containsKey('createdate')) {

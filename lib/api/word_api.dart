@@ -3,7 +3,7 @@ import 'package:instantmessage/api/user_api.dart';
 import 'package:instantmessage/models/word_model.dart';
 
 class WordApi {
-  Future<String> addOrUpdateWord(String userid, {String mylanguagecontent, String targetlanguagecontent, DateTime createdate}) async {
+  Future<String> addOrUpdateWord(String userid, {String mylanguagecontent, String targetlanguagecontent, bool islearned, DateTime createdate}) async {
     String id;
 
     try {
@@ -11,6 +11,7 @@ class WordApi {
       wordModel.userid = userid;
       wordModel.mylanguagecontent = mylanguagecontent;
       wordModel.targetlanguagecontent = targetlanguagecontent;
+      wordModel.islearned = islearned;
       wordModel.createdate = createdate;
 
       var words = await getWordsByUserId(wordModel.userid);
@@ -41,6 +42,7 @@ class WordApi {
       await wordsCollection.doc(wordUid).update({
         'mylanguagecontent': wordModel.mylanguagecontent,
         'targetlanguagecontent': wordModel.targetlanguagecontent,
+        'islearned': wordModel.islearned,
         'lastmessagedate': wordModel.createdate.millisecondsSinceEpoch,
       });
     } catch (error) {
@@ -59,6 +61,7 @@ class WordApi {
         'userid': wordModel.userid,
         'mylanguagecontent': wordModel.mylanguagecontent,
         'targetlanguagecontent': wordModel.targetlanguagecontent,
+        'islearned': wordModel.islearned,
         'createdate': wordModel.createdate == null ? null : wordModel.createdate.millisecondsSinceEpoch,
       });
 
