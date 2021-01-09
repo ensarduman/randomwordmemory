@@ -13,17 +13,26 @@ class _RandomScreenState extends State<RandomScreen> {
   @override
   Widget build(BuildContext context) {
     var wordApi = WordApi();
-    wordApi.getCurrentUserWords().then((wordsResult) {
-      setState(() {
-        this.words = wordsResult;
-      });
-    });
 
     if (words == null) {
-      return Container();
+      wordApi.getCurrentUserWords().then((wordsResult) {
+        setState(() {
+          this.words = wordsResult;
+        });
+      });
+
+      return Scaffold(
+        backgroundColor: Colors.red,
+        body: Center(
+          child: Text('Loading...'),
+        ),
+      );
     } else {
-      return Center(
-        child: Text('Random!' + words?.length.toString()),
+      return Scaffold(
+        backgroundColor: Colors.red,
+        body: Center(
+          child: Text('DSADASD SADHDSUHIAUSDIASD  HDASUD ISAUH IASHD HASD UI ASDISHA IUSHDIUSAHD IUSAHDI ASUDHAS DHIAS DHIAS IUD'),
+        ),
       );
     }
   }
