@@ -74,7 +74,7 @@ class _NewWordButtonState extends State<NewWordButton> {
                 Radius.circular(100),
               )),
           child: Icon(
-            Icons.create,
+            Icons.add,
             size: 50,
             color: Colors.white,
           )),
