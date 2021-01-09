@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:instantmessage/common/helpers/modal_helper.dart';
-import 'package:instantmessage/widgets/home_screen/search_user.dart';
 
 class StartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        ModalHelper.showBottomModal(context, content: SearchUser());
+        ModalHelper.showBottomModal(context, content: Text('ASDSADASDASD'));
       },
       child: Container(
           padding: EdgeInsets.all(10),

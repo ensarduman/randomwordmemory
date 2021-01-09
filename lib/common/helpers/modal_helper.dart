@@ -78,6 +78,7 @@ class ModalHelper {
       {String title,
       Color color = StyleColors.bottomModalTitle,
       String contentText,
+      Widget content,
       ButtonOrder buttonOrder = ButtonOrder.vertical,
       bool enableFirstButton = false,
       bool enableSecondButton = false,
@@ -127,6 +128,7 @@ class ModalHelper {
                               textAlign: TextAlign.center,
                             )
                           : Container()),
+                      (content != null ? content : Container()),
                       SizedBox(
                         height: 24,
                       ),
