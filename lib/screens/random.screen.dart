@@ -10,9 +10,15 @@ class RandomScreen extends StatefulWidget {
   _RandomScreenState createState() => _RandomScreenState();
 }
 
+enum EnumWordSide {
+  TargetLanguage,
+  MyLanguage,
+}
+
 class _RandomScreenState extends State<RandomScreen> {
   List<WordModel> words;
   int wordIndex;
+  EnumWordSide enumWordSide = EnumWordSide.TargetLanguage;
 
   void _setNewIndex() {
     setState(() {
@@ -47,8 +53,19 @@ class _RandomScreenState extends State<RandomScreen> {
 
       return Scaffold(
         backgroundColor: Colors.red,
-        body: Center(
-          child: Text(selectedWord.targetlanguagecontent),
+        body: InkWell(
+          onTap: () {
+            setState(() {
+              if (enumWordSide == EnumWordSide.TargetLanguage) {
+                enumWordSide = EnumWordSide.MyLanguage;
+              } else {
+                enumWordSide = EnumWordSide.TargetLanguage;
+              }
+            });
+          },
+          child: Center(
+            child: Text(enumWordSide == EnumWordSide.TargetLanguage ? selectedWord.targetlanguagecontent : selectedWord.mylanguagecontent),
+          ),
         ),
         floatingActionButton: Stack(
           children: <Widget>[
@@ -56,6 +73,10 @@ class _RandomScreenState extends State<RandomScreen> {
               alignment: Alignment.bottomRight,
               child: NextButton(
                 onTap: () {
+                  setState(() {
+                    this.enumWordSide = EnumWordSide.TargetLanguage;
+                  });
+
                   if (words.length > 0) {
                     _setNewIndex();
                   } else {
