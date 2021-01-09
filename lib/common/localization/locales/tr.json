@@ -20,11 +20,10 @@
     "register_error_passwordweak": "Şifre zayıf",
     "register_error_emailexists": "Bu e-mail zaten kullanımda",
     "register_error_general":"Bir hata oluştu",
-    "home_title": "Sohbetler",
+    "home_title": "Kelimeler",
     "home_logout_title":"Çıkış",
     "home_logout_text": "Çıkmak istediğinizden emin misiniz?",
     "home_logout_yes": "Evet",
     "home_logout_no":"Hayır",
-    "home_search_user_text_place_holder":"İsim girin",
-    "chat_write_message": "Mesajınızı Yazınız"
+    "home_search_user_text_place_holder":"İsim girin"
 }
