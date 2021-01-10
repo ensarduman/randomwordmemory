@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class NextWordButton extends StatelessWidget {
+class ExitRandomButton extends StatelessWidget {
   final Function onTap;
-  const NextWordButton({this.onTap});
+  const ExitRandomButton({this.onTap});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -19,7 +19,7 @@ class NextWordButton extends StatelessWidget {
                 Radius.circular(100),
               )),
           child: Icon(
-            Icons.forward_rounded,
+            Icons.close,
             size: 50,
             color: Colors.red,
           )),

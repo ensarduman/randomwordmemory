@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:instantmessage/api/word_api.dart';
 import 'package:instantmessage/common/enums.dart';
 import 'package:instantmessage/models/word_model.dart';
+import 'package:instantmessage/widgets/random_screen/exit_random_button.dart';
 import 'package:instantmessage/widgets/random_screen/next_word_button.dart';
 
 class RandomScreen extends StatefulWidget {
@@ -87,7 +88,15 @@ class _RandomScreenState extends State<RandomScreen> {
           children: <Widget>[
             Align(
               alignment: Alignment.bottomRight,
-              child: NextButton(
+              child: ExitRandomButton(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: NextWordButton(
                 onTap: () {
                   setState(() {
                     this.enumWordSide = EnumWordSide.TargetLanguage;
