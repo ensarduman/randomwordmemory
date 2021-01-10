@@ -19,10 +19,23 @@ class _RandomScreenState extends State<RandomScreen> {
   List<WordModel> words;
   int wordIndex;
   EnumWordSide enumWordSide = EnumWordSide.TargetLanguage;
+  WordModel selectedWord;
 
   void _setNewIndex() {
     setState(() {
-      wordIndex = Random().nextInt(words.length);
+      if (this.words != null && this.words.length != 0) {
+        wordIndex = Random().nextInt(words.length);
+      }
+    });
+  }
+
+  void _setSelectedWord() {
+    _setNewIndex();
+    setState(() {
+      if (this.words != null) {
+        selectedWord = this.words[wordIndex];
+        this.words.removeAt(wordIndex);
+      }
     });
   }
 
@@ -45,11 +58,8 @@ class _RandomScreenState extends State<RandomScreen> {
       );
     } else {
       if (wordIndex == null) {
-        _setNewIndex();
+        _setSelectedWord();
       }
-
-      var selectedWord = this.words[wordIndex];
-      this.words.removeAt(wordIndex);
 
       return Scaffold(
         backgroundColor: Colors.red,
@@ -78,7 +88,7 @@ class _RandomScreenState extends State<RandomScreen> {
                   });
 
                   if (words.length > 0) {
-                    _setNewIndex();
+                    _setSelectedWord();
                   } else {
                     Navigator.of(context).pop();
                   }
