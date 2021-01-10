@@ -62,7 +62,7 @@ class WordApi {
         'mylanguagecontent': wordModel.mylanguagecontent,
         'targetlanguagecontent': wordModel.targetlanguagecontent,
         'islearned': wordModel.islearned,
-        'createdate': wordModel.createdate == null ? getUtcDateTimeNow().microsecondsSinceEpoch : wordModel.createdate.millisecondsSinceEpoch,
+        'createdate': wordModel.createdate == null ? getUtcDateTimeNow().millisecondsSinceEpoch : wordModel.createdate.millisecondsSinceEpoch,
       });
 
       return result.id;
