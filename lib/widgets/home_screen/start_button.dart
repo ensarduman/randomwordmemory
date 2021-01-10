@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instantmessage/common/enums.dart';
+import 'package:instantmessage/common/helpers/modal_helper.dart';
+import 'package:instantmessage/common/localization/localization.dart';
 import 'package:instantmessage/routes/route_names.dart';
 
 class StartButton extends StatelessWidget {
@@ -8,7 +10,22 @@ class StartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(RouteNames.random, arguments: EnumDateFilterType.LastWeek);
+        ModalHelper.showModalDialog(
+          context,
+          content: DropdownButton(
+            hint: Text(localize(context, 'EnumDateFilterType_hint')),
+            items: EnumDateFilterType.values.map((value) {
+              return DropdownMenuItem(
+                child: Text(localize(context, value.toString())),
+                value: value,
+              );
+            }).toList(),
+            onChanged: (value) {
+              ModalHelper.closeModals(context);
+              Navigator.of(context).pushNamed(RouteNames.random, arguments: value);
+            },
+          ),
+        );
       },
       child: Container(
           padding: EdgeInsets.all(10),

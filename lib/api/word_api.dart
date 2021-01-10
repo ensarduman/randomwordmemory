@@ -89,7 +89,7 @@ class WordApi {
     try {
       Query words;
 
-      if (dateFilter == null) {
+      if (dateFilter == null || dateFilter == EnumDateFilterType.All) {
         words = FirebaseFirestore.instance.collection('words').where('userid', isEqualTo: userid);
       } else {
         DateTime lessDate;
@@ -123,6 +123,11 @@ class WordApi {
           case EnumDateFilterType.LastYear:
             {
               lessDate = Jiffy(getUtcDateTimeNow()).add(years: -1);
+            }
+            break;
+          default:
+            {
+              lessDate = getUtcDateTimeNow();
             }
             break;
         }

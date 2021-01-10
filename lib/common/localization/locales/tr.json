@@ -32,5 +32,13 @@
     "add_or_update_word_add_title":"Kelime Ekle",
     "add_or_update_word_update_title":"Kelime Güncelle",
     "add_or_update_word_place_holder_target_language":"Yabancı dilde",
-    "add_or_update_word_place_holder_my_language":"Kendi dilimde"
+    "add_or_update_word_place_holder_my_language":"Kendi dilimde",
+    "EnumDateFilterType_hint":"Zaman Seçiniz",
+    "EnumDateFilterType.All":"Tümü",
+    "EnumDateFilterType.LastHour":"Son Bir Saat",
+    "EnumDateFilterType.LastDay":"Son Gün",
+    "EnumDateFilterType.LastWeek":"Son Hafta",
+    "EnumDateFilterType.Lastmonth":"Son Ay",
+    "EnumDateFilterType.LastSixMonth":"Son Altı Ay",
+    "EnumDateFilterType.LastYear":"Son Bir Yıl"
 }
