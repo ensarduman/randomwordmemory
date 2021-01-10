@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instantmessage/common/enums.dart';
 import 'package:instantmessage/routes/route_names.dart';
 
 class StartButton extends StatelessWidget {
@@ -7,7 +8,7 @@ class StartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(RouteNames.random);
+        Navigator.of(context).pushNamed(RouteNames.random, arguments: EnumDateFilterType.LastWeek);
       },
       child: Container(
           padding: EdgeInsets.all(10),

@@ -19,7 +19,7 @@ class CustomRouter {
         return MaterialPageRoute(builder: (_) => RegisterScreen());
 
       case RouteNames.random:
-        return MaterialPageRoute(builder: (_) => RandomScreen());
+        return MaterialPageRoute(builder: (_) => RandomScreen(dateFilter: settings.arguments));
     }
 
     return MaterialPageRoute(builder: (_) => ErrorScreen());

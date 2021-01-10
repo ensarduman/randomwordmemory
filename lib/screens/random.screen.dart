@@ -2,17 +2,17 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:instantmessage/api/word_api.dart';
+import 'package:instantmessage/common/enums.dart';
 import 'package:instantmessage/models/word_model.dart';
 import 'package:instantmessage/widgets/random_screen/next_word_button.dart';
 
 class RandomScreen extends StatefulWidget {
+  final EnumDateFilterType dateFilter;
+
+  const RandomScreen({this.dateFilter});
+
   @override
   _RandomScreenState createState() => _RandomScreenState();
-}
-
-enum EnumWordSide {
-  TargetLanguage,
-  MyLanguage,
 }
 
 class _RandomScreenState extends State<RandomScreen> {
@@ -44,7 +44,7 @@ class _RandomScreenState extends State<RandomScreen> {
     var wordApi = WordApi();
 
     if (words == null) {
-      wordApi.getCurrentUserWords().then((wordsResult) {
+      wordApi.getCurrentUserWords(dateFilter: widget.dateFilter).then((wordsResult) {
         setState(() {
           this.words = wordsResult;
         });

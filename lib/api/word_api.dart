@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:instantmessage/api/user_api.dart';
+import 'package:instantmessage/common/enums.dart';
 import 'package:instantmessage/models/word_model.dart';
+import 'package:jiffy/jiffy.dart';
 
 class WordApi {
   Future<String> addOrUpdateWord({String wordId, String mylanguagecontent, String targetlanguagecontent, bool islearned}) async {
@@ -69,24 +71,58 @@ class WordApi {
     }
   }
 
-  Future<List<WordModel>> getCurrentUserWords() async {
+  Future<List<WordModel>> getCurrentUserWords({EnumDateFilterType dateFilter}) async {
     List<WordModel> words;
     var userApi = UserApi();
     var currentUser = await userApi.getCurrentUser();
 
     if (currentUser != null) {
-      words = await this.getWordsByUserId(currentUser.id);
+      words = await this.getWordsByUserId(currentUser.id, dateFilter: dateFilter);
     }
 
     return words;
   }
 
-  Future<List<WordModel>> getWordsByUserId(String userid) async {
+  Future<List<WordModel>> getWordsByUserId(String userid, {EnumDateFilterType dateFilter}) async {
     List<WordModel> wordModels = List<WordModel>();
     try {
       Query words;
 
-      words = FirebaseFirestore.instance.collection('words').where('userid', isEqualTo: userid);
+      if (dateFilter == null) {
+        words = FirebaseFirestore.instance.collection('words').where('userid', isEqualTo: userid);
+      } else {
+        DateTime lessDate;
+
+        switch (dateFilter) {
+          case EnumDateFilterType.LastDay:
+            {
+              lessDate = Jiffy(DateTime.now()).add(days: -1);
+            }
+            break;
+          case EnumDateFilterType.LastWeek:
+            {
+              lessDate = Jiffy(DateTime.now()).add(weeks: -1);
+            }
+            break;
+          case EnumDateFilterType.Lastmonth:
+            {
+              lessDate = Jiffy(DateTime.now()).add(months: -1);
+            }
+            break;
+          case EnumDateFilterType.LastSixMonth:
+            {
+              lessDate = Jiffy(DateTime.now()).add(months: -6);
+            }
+            break;
+          case EnumDateFilterType.LastYear:
+            {
+              lessDate = Jiffy(DateTime.now()).add(years: -1);
+            }
+            break;
+        }
+
+        words = FirebaseFirestore.instance.collection('words').where('userid', isEqualTo: userid).where('createdate', isGreaterThan: lessDate.millisecondsSinceEpoch);
+      }
 
       QuerySnapshot querySnapshot = await words.get();
       if (querySnapshot.size > 0) {
