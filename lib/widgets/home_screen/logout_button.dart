@@ -15,16 +15,6 @@ class LogoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FirebaseAuth.instance.authStateChanges().listen((User user) {
-    //   if (user == null) {
-    //     if (!_navigated) {
-    //       _navigated = true;
-    //       print('User is currently signed out!');
-    //       _logoutAction(context);
-    //     }
-    //   }
-    // });
-
     return Container(
       child: InkWell(
         onTap: () {
