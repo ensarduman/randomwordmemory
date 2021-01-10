@@ -39,6 +39,12 @@ class _RandomScreenState extends State<RandomScreen> {
     });
   }
 
+  void _refreshState() {
+    setState(() {
+      words = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var wordApi = WordApi();
@@ -90,7 +96,7 @@ class _RandomScreenState extends State<RandomScreen> {
                   if (words.length > 0) {
                     _setSelectedWord();
                   } else {
-                    Navigator.of(context).pop();
+                    _refreshState();
                   }
                 },
               ),
