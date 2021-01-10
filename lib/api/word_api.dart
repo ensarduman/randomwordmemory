@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:instantmessage/api/user_api.dart';
 import 'package:instantmessage/common/enums.dart';
+import 'package:instantmessage/common/helpers/common_helper.dart';
 import 'package:instantmessage/models/word_model.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -61,7 +62,7 @@ class WordApi {
         'mylanguagecontent': wordModel.mylanguagecontent,
         'targetlanguagecontent': wordModel.targetlanguagecontent,
         'islearned': wordModel.islearned,
-        'createdate': wordModel.createdate == null ? DateTime.now().microsecondsSinceEpoch : wordModel.createdate.millisecondsSinceEpoch,
+        'createdate': wordModel.createdate == null ? getUtcDateTimeNow().microsecondsSinceEpoch : wordModel.createdate.millisecondsSinceEpoch,
       });
 
       return result.id;
@@ -96,32 +97,32 @@ class WordApi {
         switch (dateFilter) {
           case EnumDateFilterType.LastHour:
             {
-              lessDate = Jiffy(DateTime.now()).add(hours: -1);
+              lessDate = Jiffy(getUtcDateTimeNow()).add(hours: -1);
             }
             break;
           case EnumDateFilterType.LastDay:
             {
-              lessDate = Jiffy(DateTime.now()).add(days: -1);
+              lessDate = Jiffy(getUtcDateTimeNow()).add(days: -1);
             }
             break;
           case EnumDateFilterType.LastWeek:
             {
-              lessDate = Jiffy(DateTime.now()).add(weeks: -1);
+              lessDate = Jiffy(getUtcDateTimeNow()).add(weeks: -1);
             }
             break;
           case EnumDateFilterType.Lastmonth:
             {
-              lessDate = Jiffy(DateTime.now()).add(months: -1);
+              lessDate = Jiffy(getUtcDateTimeNow()).add(months: -1);
             }
             break;
           case EnumDateFilterType.LastSixMonth:
             {
-              lessDate = Jiffy(DateTime.now()).add(months: -6);
+              lessDate = Jiffy(getUtcDateTimeNow()).add(months: -6);
             }
             break;
           case EnumDateFilterType.LastYear:
             {
-              lessDate = Jiffy(DateTime.now()).add(years: -1);
+              lessDate = Jiffy(getUtcDateTimeNow()).add(years: -1);
             }
             break;
         }

@@ -9,4 +9,8 @@ String generateUniqueId() {
   return uniqueId;
 }
 
+DateTime getUtcDateTimeNow() {
+  return DateTime.now().toUtc();
+}
+
 void showAddOrUpdateWordModalDialog() {}

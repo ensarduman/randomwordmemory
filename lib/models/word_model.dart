@@ -17,7 +17,15 @@ class WordModel {
     this.createdate,
   }) {
     if (id == null) {
-      id = generateUniqueId();
+      this.id = generateUniqueId();
+    }
+
+    if (this.createdate == null) {
+      this.createdate = getUtcDateTimeNow();
+    }
+
+    if (this.islearned == null) {
+      this.islearned = false;
     }
   }
 
