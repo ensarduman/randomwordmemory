@@ -94,6 +94,11 @@ class WordApi {
         DateTime lessDate;
 
         switch (dateFilter) {
+          case EnumDateFilterType.LastHour:
+            {
+              lessDate = Jiffy(DateTime.now()).add(hours: -1);
+            }
+            break;
           case EnumDateFilterType.LastDay:
             {
               lessDate = Jiffy(DateTime.now()).add(days: -1);

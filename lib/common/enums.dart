@@ -4,6 +4,7 @@ enum EnumWordSide {
 }
 
 enum EnumDateFilterType {
+  LastHour,
   LastDay,
   LastWeek,
   Lastmonth,
