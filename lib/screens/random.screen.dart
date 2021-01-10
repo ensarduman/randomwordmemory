@@ -80,8 +80,14 @@ class _RandomScreenState extends State<RandomScreen> {
               }
             });
           },
-          child: Center(
-            child: Text(enumWordSide == EnumWordSide.TargetLanguage ? selectedWord.targetlanguagecontent : selectedWord.mylanguagecontent),
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Center(
+              child: Text(
+                enumWordSide == EnumWordSide.TargetLanguage ? selectedWord.targetlanguagecontent : selectedWord.mylanguagecontent,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ),
           ),
         ),
         floatingActionButton: Stack(
