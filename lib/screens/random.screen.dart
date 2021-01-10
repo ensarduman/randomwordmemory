@@ -62,7 +62,7 @@ class _RandomScreenState extends State<RandomScreen> {
       }
 
       return Scaffold(
-        backgroundColor: Colors.red,
+        backgroundColor: enumWordSide == EnumWordSide.TargetLanguage ? Colors.red : Colors.white,
         body: InkWell(
           onTap: () {
             setState(() {
