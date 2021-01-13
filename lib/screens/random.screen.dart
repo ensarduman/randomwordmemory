@@ -3,14 +3,15 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:instantmessage/api/word_api.dart';
 import 'package:instantmessage/common/enums.dart';
+import 'package:instantmessage/models/random_screen_model.dart';
 import 'package:instantmessage/models/word_model.dart';
 import 'package:instantmessage/widgets/random_screen/exit_random_button.dart';
 import 'package:instantmessage/widgets/random_screen/next_word_button.dart';
 
 class RandomScreen extends StatefulWidget {
-  final EnumDateFilterType dateFilter;
+  final RandomScreenModel randomScreenModel;
 
-  const RandomScreen({this.dateFilter});
+  const RandomScreen({this.randomScreenModel});
 
   @override
   _RandomScreenState createState() => _RandomScreenState();
@@ -51,7 +52,7 @@ class _RandomScreenState extends State<RandomScreen> {
     var wordApi = WordApi();
 
     if (words == null) {
-      wordApi.getCurrentUserWords(dateFilter: widget.dateFilter).then((wordsResult) {
+      wordApi.getCurrentUserWords(dateFilter: widget.randomScreenModel.dataFilterType).then((wordsResult) {
         setState(() {
           this.words = wordsResult;
         });

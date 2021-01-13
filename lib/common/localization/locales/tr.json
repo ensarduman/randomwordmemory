@@ -40,5 +40,7 @@
     "EnumDateFilterType.LastWeek":"Son Hafta",
     "EnumDateFilterType.Lastmonth":"Son Ay",
     "EnumDateFilterType.LastSixMonth":"Son Altı Ay",
-    "EnumDateFilterType.LastYear":"Son Bir Yıl"
+    "EnumDateFilterType.LastYear":"Son Bir Yıl",
+    "start_dialog_content_isMyLanguageFirst":"Önde Kendi Dilim",
+    "start_dialog_content_start":"Başla"
 }
