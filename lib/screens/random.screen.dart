@@ -14,13 +14,18 @@ class RandomScreen extends StatefulWidget {
   const RandomScreen({this.randomScreenModel});
 
   @override
-  _RandomScreenState createState() => _RandomScreenState();
+  _RandomScreenState createState() => _RandomScreenState(this.randomScreenModel);
 }
 
 class _RandomScreenState extends State<RandomScreen> {
+  final RandomScreenModel randomScreenModel;
+  _RandomScreenState(this.randomScreenModel) {
+    enumWordSide = randomScreenModel.isMyLanguageFirst ? EnumWordSide.MyLanguage : EnumWordSide.TargetLanguage;
+  }
+
   List<WordModel> words;
   int wordIndex;
-  EnumWordSide enumWordSide = EnumWordSide.TargetLanguage;
+  EnumWordSide enumWordSide;
   WordModel selectedWord;
 
   void _setNewIndex() {
@@ -106,7 +111,7 @@ class _RandomScreenState extends State<RandomScreen> {
               child: NextWordButton(
                 onTap: () {
                   setState(() {
-                    this.enumWordSide = EnumWordSide.TargetLanguage;
+                    this.enumWordSide = widget.randomScreenModel.isMyLanguageFirst ? EnumWordSide.MyLanguage : EnumWordSide.TargetLanguage;
                   });
 
                   if (words.length > 0) {
